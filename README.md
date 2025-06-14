@@ -2,7 +2,7 @@
 
 ## 概要（Overview）
 家具メーカーを想定したBtoC向けECサイトを、フロントエンドからバックエンドまでフルスクラッチで開発しました。
-React + Node.js + MongoDBで構成し、商品閲覧からカート操作・購入・会員情報管理までの基本的機能を備えております。
+TypeScript(React) + Node.js + MongoDBで構成し、商品閲覧からカート操作・購入・会員情報管理までの基本的機能を備えております。
 
 ## 今後の改善予定
 - Next.jsへの対応
@@ -15,11 +15,11 @@ React + Node.js + MongoDBで構成し、商品閲覧からカート操作・購�
 今後も継続的に改善してまいります。
 
 ## 公開URL
-- ECサイト: [https://yuu-furniture.com](https://yuu-furniture.com)
-- フロントエンド(JavaScript): [yuu-furniture-frontend](https://github.com/yuu-1219/yuu-furniture-frontend)
-- バックエンド(JavaScript): [yuu-furniture-backend](https://github.com/yuu-1219/yuu-furniture-backend)
+- ECサイト(TypeScript対応): [https://yuu-furniture.com](https://yuu-furniture.com)
 - フロントエンド(TypeScript): [yuu-furniture-frontend-ts](https://github.com/yuu-1219/yuu-furniture-frontend-ts)
 - バックエンド(TypeScript): [yuu-furniture-backend-ts](https://github.com/yuu-1219/yuu-furniture-backend-ts)
+- - フロントエンド(JavaScript): [yuu-furniture-frontend](https://github.com/yuu-1219/yuu-furniture-frontend)
+- バックエンド(JavaScript): [yuu-furniture-backend](https://github.com/yuu-1219/yuu-furniture-backend)
 
 
 ## 使用技術（Tech Stack）
