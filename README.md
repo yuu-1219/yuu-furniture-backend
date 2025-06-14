@@ -4,7 +4,7 @@
 家具メーカーを想定したBtoC向けECサイトを、フロントエンドからバックエンドまでフルスクラッチで開発しました。
 TypeScript(React) + Node.js + MongoDBで構成し、商品閲覧からカート操作・購入・会員情報管理までの基本的機能を備えております。
 
-## 今後の改善予定
+## 今後の改善予定(Future Improvements)
 - Next.jsへの対応
 - jestによるテスト導入
 - AIによるレコメンド機能・お問い合わせ自動回答機能の導入
@@ -14,18 +14,18 @@ TypeScript(React) + Node.js + MongoDBで構成し、商品閲覧からカート�
 本ポートフォリオは、UI設計・React/MUI構築・API接続・ユーザー状態管理を中心に開発しました。
 今後も継続的に改善してまいります。
 
-## 公開URL
+## 公開URL(Deployed URL)
 - ECサイト(TypeScript対応): [https://yuu-furniture.com](https://yuu-furniture.com)
 - フロントエンド(TypeScript): [yuu-furniture-frontend-ts](https://github.com/yuu-1219/yuu-furniture-frontend-ts)
 - バックエンド(TypeScript): [yuu-furniture-backend-ts](https://github.com/yuu-1219/yuu-furniture-backend-ts)
-- - フロントエンド(JavaScript): [yuu-furniture-frontend](https://github.com/yuu-1219/yuu-furniture-frontend)
+- フロントエンド(JavaScript): [yuu-furniture-frontend](https://github.com/yuu-1219/yuu-furniture-frontend)
 - バックエンド(JavaScript): [yuu-furniture-backend](https://github.com/yuu-1219/yuu-furniture-backend)
 
 
 ## 使用技術（Tech Stack）
-- フロント：HTML / CSS / JavaScript(ES6) / TypeScript / React(Material UI含む)
+- フロントエンド：HTML / CSS / JavaScript(ES6) / TypeScript / React(Material UI)
 - バックエンド：Node.js / Express
-- データベース：MongoDB（Mongoose）
+- データベース：MongoDB（Mongoose, Atlas）
 - デプロイ：AWS(EC2, Route53, ALB, S3)
 - その他：Git / GitHub
   
@@ -46,8 +46,9 @@ TypeScript(React) + Node.js + MongoDBで構成し、商品閲覧からカート�
 | `/register`               | 会員登録ページ         | 会員情報登録                              |
 | `/user/:id`               | 会員ページ             | 注文履歴・会員情報変更・お気に入りリスト      |
 | `/user/:id/order-history` | 購入履歴ページ         | 注文履歴表示                     　　　    |
-| `/user/:id/info`          | 会員情報変更ページ      | 会員情報の確認・変更                       |
 | `/user/:id/favorite`      | お気に入り一覧ページ    | お気に入りリストの表示                      |
+| `/user/:id/info`          | 会員情報変更ページ      | 会員情報の確認・変更                       |
+| `/user/:id/password`      | パスワード変更ページ    | パスワードの変更 　　                      |
 
 
 ## 機能一覧（Feature List）
@@ -60,6 +61,30 @@ TypeScript(React) + Node.js + MongoDBで構成し、商品閲覧からカート�
 - 注文履歴の表示
 - お気に入り商品リストの表示
 - 管理者による商品登録フォーム
+  
+### ※商品一覧表示における検索・絞り込み・並べ替え機能について
+
+`/products` ページでは、以下のような検索・絞り込み・並べ替えに対応しております。。
+
+#### 【クエリパラメータによる検索】
+- `category`：カテゴリ指定によるフィルター  
+  例）`/products?category=storage_furniture`
+- `search`：検索キーワードによるフィルター  
+  例）`/products?search=収納`
+- 複合指定：  
+  例）`/products?category=storage_furniture&search=収納`
+
+#### 【ページ上での絞り込み機能】
+- `カラー`：チェックボックスで複数選択可能
+- `価格`：5,000円〜9,999円、10,000円〜14,999円 などを複数選択可能
+- 商品データ取得時に上記データをボディに含め、バックエンドより絞り込みされたデータを取得
+
+#### 【並べ替え機能】
+- 表示順を以下のいずれかに変更可能
+  - 価格の安い順(デフォルト)
+  - 価格の高い順
+  - 評価の高い順
+
 
 
 ## API設計（API Design）
@@ -94,13 +119,13 @@ Figmaで作成したECサイトのワイヤーフレームにリンクしてお�
 // Product
 {
   "_id": "550e8400-e29b-41d4-a716-446655440000",
-  "name": "オフィスチェア",
-  "price": 2500,
-  "image": "/img/chair.png",
-  "description": "背もたれ部分がメッシュ素材でできた快適なオフィスチェアです",
-  "color": "ホワイト",
+  "name": "収納家具6",
+  "price": 5500,
+  "image": "https://yuu-furniture-imgs.s3.ap-northeast-1.amazonaws.com/products/storage_furniture/storage_furniture6.jpg", 
+  "description": "アパートの一室やゲストルームを素早く簡単に整えられます。同じシリーズのベッドサイドテーブル、ベッド、ワードローブを組み合わせると統一感が出ます",
+  "color": "ブラウン",
   "stock": 20,
-  "category": "chair",
+  "category": "storage_furniture",
   "rating": 4.5
 }
 
@@ -121,7 +146,7 @@ Figmaで作成したECサイトのワイヤーフレームにリンクしてお�
     }
   ],
   "totalQty": 3,
-  "totalPrice": 35400,
+  "totalPrice": 35250,
   "updatedAt": "2025-05-18T14:32:00Z"
 }
 
@@ -130,7 +155,7 @@ Figmaで作成したECサイトのワイヤーフレームにリンクしてお�
   "_id": "c8b21c0e-5a74-4e67-88f5-2e13ef8300e9",
   "name": "yuu",
   "email": "yuu@gmail.com",
-  "password": "（ハッシュ化されたもの）",
+  "password": "（ローカルで生成されたパスワードをハッシュ化し、DBへ格納）",
   "orders": [
     {
       "orderId": "20250508-0234",
@@ -147,8 +172,8 @@ Figmaで作成したECサイトのワイヤーフレームにリンクしてお�
         }
       ],
       "totalQty": 3,
-      "totalPrice": 8800,
-      "purchasedAt": "2024-05-08T15:23:00Z"
+      "totalPrice": 8250,
+      "purchasedAt": "2024-06-08T15:23:00Z"
     },
   ],
   "favorites": [
