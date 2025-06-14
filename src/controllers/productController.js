@@ -19,7 +19,6 @@ module.exports.allProducts = wrapAsync(async (req, res, next) => {
         filteredProducts = filteredProducts.filter(c => c.name.includes(searchWord));
     } 
 
-    // let filteredProducts = products;
 
     if (colors.length > 0) {
         filteredProducts = filteredProducts.filter(c => colors.includes(c.color));
@@ -32,9 +31,6 @@ module.exports.allProducts = wrapAsync(async (req, res, next) => {
      }
 
 
-    // if (filteredProducts.length === 0) {
-    //     throw new AppError("商品データが登録されていません", 404);
-    // }
 
     res.status(200).json(filteredProducts);
 })

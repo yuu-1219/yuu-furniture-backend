@@ -17,7 +17,6 @@ module.exports.cartDetail = wrapAsync(async (req, res, next) => {
 module.exports.registerCart = wrapAsync(async (req, res, next) => {
     const cartData = {
         ...req.body,
-        // cartId: uuid()
     };
     const newCart = new Cart(cartData);
     await newCart.save();

@@ -31,12 +31,8 @@ module.exports.login = wrapAsync(async (req, res, next) => {
         throw new AppError("パスワードが違います", 401);
     }
 
-    // if (isMatch) {
     const { password: _, ...withoutPasswordUser } = foundUser.toObject();
     res.status(200).json(withoutPasswordUser);
-    // } else {
-    //     return res.status(401).json({ message: 'パスワードが違います' });
-    // }
 })
 
 module.exports.registerUser = wrapAsync(async (req, res, next) => {

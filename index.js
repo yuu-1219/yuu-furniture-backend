@@ -1,11 +1,9 @@
 require('dotenv').config();
 
-const { v4: uuid } = require("uuid");
-
 const express = require("express");
 const app = express()
 const path = require('path');
-const methodOverride = require('method-override')
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -14,7 +12,7 @@ const productRoutes = require("./src/routes/productRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const cartRoutes = require("./src/routes/cartRoutes");
 
-const localdb_url = 'mongodb://localhost:27017/yuu-furniture'
+// const localdb_url = 'mongodb://localhost:27017/yuu-furniture'
 const dburl = process.env.DB_URL;
 
 console.log("DB URL:", dburl);
@@ -64,7 +62,6 @@ app.use((err, req, res, next) => {
 
 app.use((err, req, res, next) => {
     const { status = 500, message = '何らかのサーバーエラーが発生しました' } = err;
-    // res.status(status).send(message);
     console.error("An error occured:", message);
     return res.status(status).json({ message });
 })

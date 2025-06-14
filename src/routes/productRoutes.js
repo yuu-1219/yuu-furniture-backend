@@ -4,11 +4,11 @@ const express = require("express");
 const app = express()
 const router = express.Router();
 const path = require('path');
-const methodOverride = require('method-override')
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const Product = require("../models/product");
+// const Product = require("../models/product");
 const productController = require("../controllers/productController");
 
 const dburl = process.env.DB_URL;
